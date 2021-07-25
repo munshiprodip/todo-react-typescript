@@ -19,6 +19,7 @@ function App() {
   const [todos, setTodos] = useState<ITodos[]>([]);
   const [filteredTodos, setFilteredTodos] = useState<ITodos[]>(todos);
   const [todo, setTodo] = useState<string>("");
+  const [manuActive, setManuActive] = useState<string>("all");
   const [editTodo, setEditTodo] = useState<ITodos>({id:0, todo:"", isCompleted:false});
 
   // filter todo
@@ -26,11 +27,14 @@ function App() {
     if(q==='completed'){
       const newFilteredTodo = todos.filter(todo=>todo.isCompleted===true)
       setFilteredTodos(newFilteredTodo)
+      setManuActive('completed')
     }else if(q==='pedning'){
       const newFilteredTodo = todos.filter(todo=>todo.isCompleted===false)
       setFilteredTodos(newFilteredTodo)
+      setManuActive('pedning')
     }else{
       setFilteredTodos(todos)
+      setManuActive('all')
     }
     
   }
@@ -54,6 +58,7 @@ function App() {
         isCompleted: false,
       },
     ])
+    setManuActive('all')
     setTodo("");
   };
 
@@ -68,6 +73,7 @@ function App() {
     });
     setTodos(newTodos);
     setFilteredTodos(newTodos)
+    setManuActive('all')
     setEditTodo({id:0, todo:"", isCompleted:false})
   };
 
@@ -108,6 +114,7 @@ function App() {
           deleteTodo={deleteTodo}
           setEditTodo={setEditTodo}
           filterTodo={filterTodo}
+          manuActive={manuActive}
         />
         <Footer/>
       </Container>

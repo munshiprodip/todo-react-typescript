@@ -12,15 +12,16 @@ interface IProps {
   deleteTodo: (id: number) => void;
   setEditTodo:(todo:ITodos)=>void;
   filterTodo:(q:string)=>void;
+  manuActive:string;
 }
-const TodoList = ({ filteredTodos, handleCheck, deleteTodo, setEditTodo, filterTodo }: IProps) => {
+const TodoList = ({ filteredTodos, handleCheck, deleteTodo, setEditTodo, filterTodo, manuActive }: IProps) => {
   return (
     <div className="todo-container">
       <div className="todo-header">
         <ul>
-          <li onClick={()=>filterTodo('all')} >All</li>
-          <li onClick={()=>filterTodo('pedning')}>Pending</li>
-          <li onClick={()=>filterTodo('completed')}>Completed</li>
+          <li className={manuActive==='all'? "active":""} onClick={()=>filterTodo('all')} >All</li>
+          <li className={manuActive==='pedning'? "active":""} onClick={()=>filterTodo('pedning')}>Pending</li>
+          <li className={manuActive==='completed'? "active":""} onClick={()=>filterTodo('completed')}>Completed</li>
         </ul>
       </div>
       <div className="todo-list">

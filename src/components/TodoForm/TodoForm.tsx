@@ -20,6 +20,7 @@ const TodoForm = ({ handleSubmit, todo, setTodo }: IProps) => {
             name="todo"
             id="todo"
             value={todo}
+            placeholder="Type your task"
             className="text-input"
             onChange={handleInputChange}
           />
