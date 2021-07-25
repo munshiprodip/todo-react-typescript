@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Container from "./components/Container/Container";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import EditForm from "./components/TodoForm/EditForm";
 import TodoForm from "./components/TodoForm/TodoForm";
@@ -108,6 +109,7 @@ function App() {
           setEditTodo={setEditTodo}
           filterTodo={filterTodo}
         />
+        <Footer/>
       </Container>
     </div>
   );

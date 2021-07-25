@@ -46,7 +46,7 @@ const TodoList = ({ filteredTodos, handleCheck, deleteTodo, setEditTodo, filterT
                       id={`checkbox${id}`}
                     />
                   </td>
-                  <td className={isCompleted ? "done-todo" : ""}>{todo}</td>
+                  <td className={isCompleted ? "done-todo" : "todo"}>{todo}</td>
                   <td width="150px">
                     <div className="btn-group">
                       <button onClick={()=>setEditTodo({ id, todo, isCompleted })} disabled={isCompleted} className={`${isCompleted ? "btn-disabled" : ""} btn-edit`}>
