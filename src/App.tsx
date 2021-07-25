@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import EditForm from "./components/TodoForm/EditForm";
 import TodoForm from "./components/TodoForm/TodoForm";
 import TodoList from "./components/TodoList/TodoList";
+import fakeTodos from "./fakeData/fakeTodos";
 
 interface ITodos {
   id: number;
@@ -16,7 +17,7 @@ interface ITodos {
 type TSubmit = (e: React.FormEvent<HTMLFormElement>) => void;
 
 function App() {
-  const [todos, setTodos] = useState<ITodos[]>([]);
+  const [todos, setTodos] = useState<ITodos[]>(fakeTodos);
   const [filteredTodos, setFilteredTodos] = useState<ITodos[]>(todos);
   const [todo, setTodo] = useState<string>("");
   const [manuActive, setManuActive] = useState<string>("all");
