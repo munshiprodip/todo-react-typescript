@@ -66,6 +66,7 @@
   display: inline-block;
     padding: 5px 10px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 /* todo-list */
@@ -79,12 +80,39 @@ table{
   width:100%;
   border-spacing: unset;
 }
+th, td{
+  padding: 5px 10px;
+}
+tr{
+  transition: all .2s;
+}
 
 th{
   border-bottom: 1px solid #000;
-    border-collapse: collapse !important;
+  border-collapse: collapse !important;
 }
 
 .done-todo{
   text-decoration: line-through;
+}
+
+.btn-group{
+  text-align: center;
+}
+
+.btn-edit, .btn-delete{
+  margin: 5px 2px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+}
+.btn-edit{
+  background-color: blue;
+}
+.btn-delete{
+  background-color: rgb(255, 0, 0);
+}
+.btn-disabled{
+  background-color: rgb(100, 74, 74);
 }

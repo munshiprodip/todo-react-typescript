@@ -7,18 +7,20 @@ interface ITodos {
 }
 
 interface IProps {
-  todos: ITodos[];
+  filteredTodos: ITodos[];
   handleCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
   deleteTodo: (id: number) => void;
+  setEditTodo:(todo:ITodos)=>void;
+  filterTodo:(q:string)=>void;
 }
-const TodoList = ({ todos, handleCheck, deleteTodo }: IProps) => {
+const TodoList = ({ filteredTodos, handleCheck, deleteTodo, setEditTodo, filterTodo }: IProps) => {
   return (
     <div className="todo-container">
       <div className="todo-header">
         <ul>
-          <li>All</li>
-          <li>Pending</li>
-          <li>Completed</li>
+          <li onClick={()=>filterTodo('all')} >All</li>
+          <li onClick={()=>filterTodo('pedning')}>Pending</li>
+          <li onClick={()=>filterTodo('completed')}>Completed</li>
         </ul>
       </div>
       <div className="todo-list">
@@ -31,8 +33,8 @@ const TodoList = ({ todos, handleCheck, deleteTodo }: IProps) => {
             </tr>
           </thead>
           <tbody>
-            {todos.length > 0 ? (
-              todos.map(({ id, todo, isCompleted }, i) => (
+            {filteredTodos.length > 0 ? (
+              filteredTodos.map(({ id, todo, isCompleted }, i) => (
                 <tr key={i}>
                   <td width="50px">
                     <input
@@ -47,13 +49,13 @@ const TodoList = ({ todos, handleCheck, deleteTodo }: IProps) => {
                   <td className={isCompleted ? "done-todo" : ""}>{todo}</td>
                   <td width="150px">
                     <div className="btn-group">
-                      <button disabled={isCompleted} className="btn-edit">
+                      <button onClick={()=>setEditTodo({ id, todo, isCompleted })} disabled={isCompleted} className={`${isCompleted ? "btn-disabled" : ""} btn-edit`}>
                         Edit
                       </button>
                       <button
                         disabled={!isCompleted}
                         onClick={() => deleteTodo(id)}
-                        className="btn-delete"
+                        className={`${isCompleted ? "" : "btn-disabled"} btn-delete`}
                       >
                         Delete
                       </button>
